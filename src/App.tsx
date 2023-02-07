@@ -16,8 +16,10 @@ function App() {
     <main className="App">
       <h3>lose win</h3>
       <Drawing />
-      {/* <Word /> */}
-      {/* <Keyboard /> */}
+      <Word />
+      <div style={{ alignSelf: 'stretch' }}>
+        <Keyboard />
+      </div>
     </main>
   )
 }
