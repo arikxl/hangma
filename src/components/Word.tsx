@@ -12,7 +12,7 @@ export function Word({ guessedLetters , wordToGuess}: WordProps) {
     }}
     >
         {wordToGuess.split("").map((letter, index) => (
-            <span style={{ borderBottom: '.1em solid black' , minWidth: '60px', textAlign: 'center' }} key={index}>
+            <span style={{ borderBottom: '.1em solid black' , minWidth: '80px', textAlign: 'center' }} key={index}>
                 <span style={{
                     visibility: guessedLetters.includes(letter) ? 'visible' : 'hidden'
                 }}>

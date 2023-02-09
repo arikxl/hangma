@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Drawing } from './components/Drawing';
 import { Keyboard } from './components/Keyboard';
 import { Word } from './components/Word';
@@ -16,11 +16,34 @@ function App() {
     letter => !wordToGuess.includes(letter)
   )
 
+  const addGuessedLetters = useCallback((letter: string) => {
+
+    if (guessedLetters.includes(letter)) return;
+
+    setGuessedLetters(currentLetters => [...currentLetters, letter]);
+  }, [guessedLetters])
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      const key = e.key;
+
+      if (!key.match(/^[a-z]$/)) return;
+      e.preventDefault();
+      addGuessedLetters(key);
+    }
+
+    document.addEventListener("keypress", handler);
+
+    return () => {
+      document.removeEventListener("keypress", handler);
+    }
+  }, [guessedLetters])
+
   return (
     <main className="App">
       <h3>lose win</h3>
-      <Drawing numberOfGuesses={ incorrectLetters.length }   />
-      <Word guessedLetters={guessedLetters} wordToGuess={wordToGuess } />
+      <Drawing numberOfGuesses={incorrectLetters.length} />
+      <Word guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
       <div style={{ alignSelf: 'stretch' }}>
         <Keyboard />
       </div>

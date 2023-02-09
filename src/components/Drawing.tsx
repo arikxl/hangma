@@ -81,10 +81,7 @@ type DrawingProps = {
 }
 
 export function Drawing({ numberOfGuesses }: DrawingProps) {
-
-
-
-
+ 
     return <section style={{ position: 'relative' }}>
         {BODY_PARTS.slice(0, numberOfGuesses)}
 
