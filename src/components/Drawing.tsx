@@ -1,35 +1,35 @@
 
 const HEAD = (
     <div style={{
-        width: '50px',
-        height: '50px',
+        width: '40px',
+        height: '40px',
         borderRadius: '100%',
         border: '10px black solid',
         position: 'absolute',
         top: '30px',
-        right: '-30px',
+        right: '-25px',
     }} />
 );
 
 const BODY = (
     <div style={{
         width: '10px',
-        height: '100px',
+        height: '90px',
         background: 'black',
         position: 'absolute',
-        top: '100px',
+        top: '80px',
         right: 0,
     }} />
 );
 
 const RIGHT_ARM = (
     <div style={{
-        width: '90px',
+        width: '70px',
         height: '10px',
         background: 'black',
         position: 'absolute',
-        top: '130px',
-        right: '-90px',
+        top: '110px',
+        right: '-70px',
         rotate: '-30deg',
         transformOrigin: 'left bottom'
     }} />
@@ -37,11 +37,11 @@ const RIGHT_ARM = (
 
 const LEFT_ARM = (
     <div style={{
-        width: '90px',
+        width: '70px',
         height: '10px',
         background: 'black',
         position: 'absolute',
-        top: '130px',
+        top: '110px',
         right: '10px',
         rotate: '30deg',
         transformOrigin: 'right bottom'
@@ -50,12 +50,12 @@ const LEFT_ARM = (
 
 const RIGHT_LEG = (
     <div style={{
-        width: '100px',
+        width: '80px',
         height: '10px',
         background: 'black',
         position: 'absolute',
-        top: '190px',
-        right: '-90px',
+        top: '160px',
+        right: '-70px',
         rotate: '60deg',
         transformOrigin: 'left bottom'
     }} />
@@ -63,11 +63,11 @@ const RIGHT_LEG = (
 
 const LEFT_LEG = (
     <div style={{
-        width: '100px',
+        width: '80px',
         height: '10px',
         background: 'black',
         position: 'absolute',
-        top: '190px',
+        top: '160px',
         right: 0,
         rotate: '-60deg',
         transformOrigin: 'right bottom'
@@ -86,8 +86,8 @@ export function Drawing({ numberOfGuesses }: DrawingProps) {
         {BODY_PARTS.slice(0, numberOfGuesses)}
 
         <div style={{height: '30px', width: '10px', background: 'black', position: 'absolute', top: 0, right: 0}} />
-        <div style={{height: '10px', width: '200px', background: 'black', marginLeft: '120px'}} />
-        <div style={{height: '300px', width: '10px', background: 'black', marginLeft: '120px'}} />
-        <div style={{height:'10px', width: '250px', background: 'black'}}/>
+        <div style={{height: '10px', width: '150px', background: 'black', marginLeft: '100px'}} />
+        <div style={{height: '250px', width: '10px', background: 'black', marginLeft: '100px'}} />
+        <div style={{height:'10px', width: '200px', background: 'black'}}/>
     </section>
 }

@@ -8,12 +8,12 @@ export function Word({ reveal =false, guessedLetters , wordToGuess}: WordProps) 
 
 
     return <section style={{
-        display: 'flex', gap: '0.25rem', fontSize: '6rem',
-        fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '30px'
+        display: 'flex', gap: '0.25rem', fontSize: '5rem',
+        fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '20px'
     }}
     >
         {wordToGuess.split("").map((letter, index) => (
-            <span style={{ borderBottom: '.1em solid black' , minWidth: '80px', textAlign: 'center' }} key={index}>
+            <span style={{ borderBottom: '.1em solid black' , minWidth: '70px', textAlign: 'center' }} key={index}>
                 <span style={{
                     visibility: guessedLetters.includes(letter) || reveal
                         ? 'visible' : 'hidden',

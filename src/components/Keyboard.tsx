@@ -14,9 +14,11 @@ type KeyboardProps = {
 
 export function Keyboard({ isEndGame = false, activeLetters, inactiveLetters, addGuessedLetters }: KeyboardProps) {
     return <section style={{
-        display: 'grid',
+        display: 'flex',
         gridTemplateColumns: 'repeat(auto-fit, minmax(75px, 1fr))',
-        gap: '0.5rem'
+        gap: '0.5rem',
+        width: '90%',
+        margin: '0 auto'
     }}>
         {KEYS.map(key => {
             const isActive = activeLetters.includes(key);

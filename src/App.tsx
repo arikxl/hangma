@@ -18,6 +18,7 @@ function App() {
 
   const isLose = incorrectLetters.length >= 6;
   const isWin = wordToGuess.split("").every(letter => guessedLetters.includes(letter));
+  const refresh = () => window.location.reload()
 
   const addGuessedLetters = useCallback((letter: string) => {
 
@@ -44,16 +45,19 @@ function App() {
 
   return (
     <main className="App">
-      {isWin && <h3>You Won!</h3>}
-      {isLose && <h3>Try Again!</h3>}
+      <h3 className="msg">
+      {isWin && "You Won!"}
+      {isLose && "Try Again!"}
+      </h3>
       <Drawing numberOfGuesses={incorrectLetters.length} />
       <Word guessedLetters={guessedLetters} wordToGuess={wordToGuess} reveal={ isLose} />
-      <div style={{ alignSelf: 'stretch' }}>
+      <div style={{ alignSelf: 'stretch', marginBottom: '20px' }}>
         <Keyboard activeLetters={guessedLetters.filter(letter =>
           wordToGuess.includes(letter))} inactiveLetters={incorrectLetters}
           addGuessedLetters={addGuessedLetters}
         isEndGame = {isWin || isLose}/>
       </div>
+      <button onClick={refresh} className="playBtn">Play again</button>
     </main>
   )
 }
