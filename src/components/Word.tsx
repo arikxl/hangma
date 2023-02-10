@@ -1,9 +1,10 @@
 type WordProps= { 
     guessedLetters: string[],
-    wordToGuess: string
+    wordToGuess: string,
+    reveal? : boolean
 }
 
-export function Word({ guessedLetters , wordToGuess}: WordProps) {
+export function Word({ reveal =false, guessedLetters , wordToGuess}: WordProps) {
 
 
     return <section style={{
@@ -14,7 +15,9 @@ export function Word({ guessedLetters , wordToGuess}: WordProps) {
         {wordToGuess.split("").map((letter, index) => (
             <span style={{ borderBottom: '.1em solid black' , minWidth: '80px', textAlign: 'center' }} key={index}>
                 <span style={{
-                    visibility: guessedLetters.includes(letter) ? 'visible' : 'hidden'
+                    visibility: guessedLetters.includes(letter) || reveal
+                        ? 'visible' : 'hidden',
+                    color: !guessedLetters.includes(letter) && reveal ? "red" : "inherit"
                 }}>
                     {letter}
                 </span>

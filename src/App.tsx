@@ -14,14 +14,17 @@ function App() {
 
   const incorrectLetters = guessedLetters.filter(
     letter => !wordToGuess.includes(letter)
-  )
+  );
+
+  const isLose = incorrectLetters.length >= 6;
+  const isWin = wordToGuess.split("").every(letter => guessedLetters.includes(letter));
 
   const addGuessedLetters = useCallback((letter: string) => {
 
-    if (guessedLetters.includes(letter)) return;
+    if (guessedLetters.includes(letter) || isLose || isWin) return;
 
     setGuessedLetters(currentLetters => [...currentLetters, letter]);
-  }, [guessedLetters])
+  }, [guessedLetters, isWin, isLose])
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -41,13 +44,15 @@ function App() {
 
   return (
     <main className="App">
-      <h3>lose win</h3>
+      {isWin && <h3>You Won!</h3>}
+      {isLose && <h3>Try Again!</h3>}
       <Drawing numberOfGuesses={incorrectLetters.length} />
-      <Word guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
+      <Word guessedLetters={guessedLetters} wordToGuess={wordToGuess} reveal={ isLose} />
       <div style={{ alignSelf: 'stretch' }}>
         <Keyboard activeLetters={guessedLetters.filter(letter =>
           wordToGuess.includes(letter))} inactiveLetters={incorrectLetters}
-          addGuessedLetters={addGuessedLetters} />
+          addGuessedLetters={addGuessedLetters}
+        isEndGame = {isWin || isLose}/>
       </div>
     </main>
   )

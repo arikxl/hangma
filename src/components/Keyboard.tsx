@@ -8,10 +8,11 @@ const KEYS = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
 type KeyboardProps = {
     activeLetters: string[],
     inactiveLetters: string[],
-    addGuessedLetters: (letter: string) => void
+    addGuessedLetters: (letter: string) => void,
+    isEndGame?: boolean
 }
 
-export function Keyboard({ activeLetters, inactiveLetters, addGuessedLetters }: KeyboardProps) {
+export function Keyboard({ isEndGame = false, activeLetters, inactiveLetters, addGuessedLetters }: KeyboardProps) {
     return <section style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(75px, 1fr))',
@@ -24,7 +25,7 @@ export function Keyboard({ activeLetters, inactiveLetters, addGuessedLetters }: 
                 <button key={key} onClick={() => addGuessedLetters(key)}
                     className={`${styles.btn} ${isActive ? styles.active : " "}
                     ${isInactive ? styles.inactive : " "}`}
-                    disabled={ isInactive || isActive }>
+                    disabled={isInactive || isActive || isEndGame }>
                     {key} 
                 </button>
             )
